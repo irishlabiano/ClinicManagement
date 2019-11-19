@@ -5,40 +5,68 @@
 
 
 <!-- top tiles -->
-<div class="row top_tiles">
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-            <div class="count patients"></div>
-            <h3>Total Patients</h3>
-            <p class="count_bottom"><i class="green todayspatients"> </i> Added From Today</p>
+    <div class="row top_tiles">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                <div class="count patients"></div>
+                <h3>Total Patients</h3>
+                <p class="count_bottom"><i class="green todayspatients"> </i> Added From Today</p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-comments-o"></i></div>
+                <div class="count appointments"></div>
+                <h3>Total Appointments</h3>
+                <p class="count_bottom"><i class="green todaysappointments"> </i>  For Today</p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                <div class="count doctors"></div>
+                <h3>Total Doctors</h3>
+                <p class="count_bottom"><i class="green availabledoctors"> </i> Doctors Available</p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                <div class="count users"></div>
+                <h3>Total Users</h3>
+                <p class="count_bottom"><i class="green activeaccounts"> </i> Active Accounts</p>
+            </div>
+        </div>
+
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                <div class="count cities"></div>
+                <h3>Total Cities</h3>
+                <p class="count_bottom"><i class="green activeCities"> </i> Active Cities</p>
+            </div>
+        </div>
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                <div class="count specializations"></div>
+                <h3>Total Specializations</h3>
+                <p class="count_bottom"><i class="green activeSpecializations"> </i> Active Specializations</p>
+            </div>
+        </div>
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                <div class="count attendances"></div>
+                <h3>Total Attendances</h3>
+                <p class="count_bottom"><i class="green activeAttendances"> </i> Active Attendances</p>
+            </div>
         </div>
     </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-comments-o"></i></div>
-            <div class="count appointments"></div>
-            <h3>Total Appointments</h3>
-            <p class="count_bottom"><i class="green todaysappointments"> </i>  For Today</p>
-        </div>
-    </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-            <div class="count doctors"></div>
-            <h3>Total Doctors</h3>
-            <p class="count_bottom"><i class="green availabledoctors"> </i> Doctors Available</p>
-        </div>
-    </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-check-square-o"></i></div>
-            <div class="count users"></div>
-            <h3>Total Users</h3>
-            <p class="count_bottom"><i class="green activeaccounts"> </i> Active Accounts</p>
-        </div>
-    </div>
-</div>
 <!-- /top tiles -->
 
 @section scripts{
@@ -78,6 +106,26 @@
             $.get('../../../Home/ActiveAccounts', null, function (data) {
                 $('.activeaccounts').append(data);
             }, 'json');
+
+            //Count Cities
+            $.get('http://localhost:7071/api/getCities', function (data) {
+                $('.activeCities').append(data);
+                $('.cities').append(data);
+            }, 'json');
+
+
+            //Count Attendances
+            $.get('http://localhost:7071/api/getAttendances', function (data) {
+                $('.activeAttendances').append(data);
+                $('.attendances').append(data);
+            }, 'json');
+
+            //Count Specializations
+            $.get('http://localhost:7071/api/getSpecializations', function (data) {
+                $('.activeSpecializations').append(data);
+                $('.specializations').append(data);
+            }, 'json');
+
             
 
         });
